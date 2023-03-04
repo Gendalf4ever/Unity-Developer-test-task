@@ -1,7 +1,7 @@
 # Blender v2.80 (sub 75) OBJ File: 'SkeletonCharacterPack_export.blend'
 # www.blender.org
-mtllib character_skeleton_archer_head.mtl
-o character_skeleton_archer_head_Cube.7658
+mtllib character_skeleton_mage_head.mtl
+o character_skeleton_mage_head_Cube.7687
 v 0.303517 0.434087 0.219131
 v 0.276512 0.513349 0.229868
 v 0.124491 0.491174 0.321583

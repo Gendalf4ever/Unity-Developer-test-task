@@ -10,13 +10,13 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         offset = transform.position - target.position;
-        print("offset:" + offset);
+        
     }
 
    
-    void FixedUpdate()
+   public void FixedUpdate()
     {
-       Vector3 camPosition = new Vector3(offset.x + target.position.x, transform.position.y, transform.position.z);
+        Vector3 camPosition = new Vector3(offset.x + target.position.x, transform.position.y, transform.position.z);
         transform.position = camPosition;
         print("camPos:" + camPosition);
     }
