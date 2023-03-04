@@ -18,6 +18,5 @@ public class CameraController : MonoBehaviour
     {
         Vector3 camPosition = new Vector3(offset.x + target.position.x, transform.position.y, transform.position.z);
         transform.position = camPosition;
-        print("camPos:" + camPosition);
     }
 }

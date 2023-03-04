@@ -12,22 +12,32 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform player;
     private int enemiesCount = 3;
 
+  
+
+    //public float enemySpeed;
+    public bool enemyHasSpawned = false;
+
     void Start()
     {
         for (int i = 0; i < enemiesCount; i++)
         {
             SpawnEnemy(Random.Range(0, enemyPrefabs.Length));
         }
+
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         
     }
     void Attack()
     {
+        /*
+        if(transform.position.x <= distanceBetweenEnemyAndPlayer)
+        {
 
+        } */
     }
     void Death()
     {
@@ -35,9 +45,11 @@ public class EnemyController : MonoBehaviour
     }
     private void SpawnEnemy(int enemyIndex)
     {
-        var pos = transform.position.x;
+        
         GameObject nextEnemy = Instantiate(enemyPrefabs[enemyIndex], transform.right * spawnPosition, transform.rotation);
         activeEnemies.Add(nextEnemy);
         spawnPosition += distanceBetweenEnemies;
+        print("enemy:" + enemyHasSpawned);
+        enemyHasSpawned = true;
     }
 }

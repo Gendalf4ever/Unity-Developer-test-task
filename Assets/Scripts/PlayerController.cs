@@ -4,25 +4,55 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject[] spheres;
+    private List<GameObject> sphereList = new List<GameObject>();
     private CharacterController controller;
-    public Transform enemy;
     public Vector3 direction;
-    public CameraController camera;
-    bool enemyInRange = false; //чтобы останавливался когда в поле зрения появляется враг
-    float enemyDistance = 20; //расстояние между противником и слаймом
-   // private Vector3 offset; //расстояние между игроком и врагом
-    
+    private EnemyController enemy;
+    public static bool enemySpawn;
+    private float spawnSpherePosition = 0;
+    private float sphereLength = 1;
     void Start()
     {
+        
         controller = GetComponent<CharacterController>();
-       camera = GetComponent<CameraController>();
+      enemy = GetComponent<EnemyController>();
+        enemySpawn = GameObject.Find("enemyHasSpawned");
+        
+        print("1:"+enemySpawn);
+        
     }
     void FixedUpdate()
     {
-        if(enemyInRange==false)
+     
+      
+       // if (enemySpawn==true)
         controller.Move(direction * Time.fixedDeltaTime);
+       // else
+        //{
+          //  PlayerAttack();
+        //}
+       
 
     }
-    
+    void PlayerAttack()
+    {
+        for (int i = 0; i < spheres.Length; i++)
+        {
+           SpawnSphere(Random.Range(0, spheres.Length));
+        }
+    }
+    private void SpawnSphere(int sphereIndex)
+    {
+        var position = transform.position.x;
+        GameObject nextSphere = Instantiate(spheres[sphereIndex], transform.right * spawnSpherePosition, transform.rotation);
+        sphereList.Add(nextSphere);
+        spawnSpherePosition += sphereLength;
+    }
+    private void DeleteSphere()
+    {
+        Destroy(sphereList[0]);
+        sphereList.RemoveAt(0);
+    }
 }
  
